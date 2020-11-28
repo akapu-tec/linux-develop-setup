@@ -1,7 +1,14 @@
+# Install Ruby 2.7.2
+# Ubuntu 20.04
 # Author: Gedean Dias
 # Date: 11-2020
-# Based on Ruby Docker Image:
-# https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
+# Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
+
+### WSL Setup
+# wsl -l -v
+# wsl --set-version <distriubtion name> <version number>
+# e.g.
+# wsl --set-version Ubuntu-20.04 2
 
 set -eux; 
 	mkdir -p /usr/local/etc; 
@@ -13,7 +20,7 @@ set -eux;
 LANG=C.UTF-8
 RUBY_MAJOR=2.7
 RUBY_VERSION=2.7.2
-RUBY_DOWNLOAD_SHA256=6e5706d0d4ee4e1e2f883db9d768586b4d06567debea353c796ec45e8321c3d4
+RUBY_DOWNLOAD_SHA256=1b95ab193cc8f5b5e59d2686cb3d5dcf1ddf2a86cb6950e0b4bdaae5040ec0d6
 
 set -eux; 
 	
