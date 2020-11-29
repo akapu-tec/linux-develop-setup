@@ -10,6 +10,10 @@
 # e.g.
 # wsl --set-version Ubuntu-20.04 2
 
+
+### Ubuntu
+sudo apt update
+
 set -eux; 
 	mkdir -p /usr/local/etc; 
 	{ 
@@ -104,7 +108,7 @@ BUNDLE_APP_CONFIG=$GEM_HOME
 PATH=$GEM_HOME/bin:$PATH
 
 # added by Gedean Dias
-sudo apt-get autoremove
+sudo apt-get autoremove -y
 
 # adjust permissions of a few directories for running "gem install" as an arbitrary user
 # RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"  
