@@ -4,6 +4,8 @@
 # Date: 11-2020
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 
+# Read commom issues of specific libs at the end of this file
+
 ### WSL Setup
 # wsl -l -v
 # wsl --set-version <distriubtion name> <version number>
@@ -112,8 +114,13 @@ PATH=$GEM_HOME/bin:$PATH
 sudo apt install zsh -y
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# added by Gedean Dias
-sudo apt-get autoremove -y
+### added by Gedean Dias
+# Clean up garbage
+# sudo apt-get autoremove -y
+
+
 
 # adjust permissions of a few directories for running "gem install" as an arbitrary user
 # RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"  
+
+
