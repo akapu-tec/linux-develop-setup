@@ -107,6 +107,11 @@ BUNDLE_SILENCE_ROOT_WARNING=1
 BUNDLE_APP_CONFIG=$GEM_HOME
 PATH=$GEM_HOME/bin:$PATH
 
+
+# Oh My ZSH (Git)
+sudo apt install zsh -y
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # added by Gedean Dias
 sudo apt-get autoremove -y
 
