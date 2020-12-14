@@ -1,7 +1,7 @@
-# Install Ruby 2.7.2
-# Ubuntu 20.04
+# Install Ruby 2.4.6
+# Ubuntu 18.04
 # Author: Gedean Dias
-# Date: 12-2020
+# Date: 11-2020
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 
 # Read commom issues of specific libs at the end of this file
@@ -24,14 +24,13 @@ set -eux;
 	} >> /usr/local/etc/gemrc
 
 LANG=C.UTF-8
-RUBY_MAJOR=2.7
-RUBY_VERSION=2.7.2
-RUBY_DOWNLOAD_SHA256=1b95ab193cc8f5b5e59d2686cb3d5dcf1ddf2a86cb6950e0b4bdaae5040ec0d6
+RUBY_MAJOR=2.4
+RUBY_VERSION=2.4.6
+RUBY_DOWNLOAD_SHA256=25da31b9815bfa9bba9f9b793c055a40a35c43c6adfb1fdbd81a09099f9b529c
 
 set -eux; 
 	
 	savedAptMark="$(apt-mark showmanual)"; 
-	apt-get update; 
 	apt-get install -y --no-install-recommends bison;
 	apt-get install -y --no-install-recommends dpkg-dev;
 	apt-get install -y --no-install-recommends libgdbm-dev;
@@ -50,17 +49,6 @@ set -eux;
 	# rails app specific	
 	apt-get install -y --no-install-recommends libmysqlclient-dev;
 
-	# NodeJS
-	# apt-get install -y --no-install-recommends nodejs;
-	curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -;
-	apt-get install -y nodejs;
-	
-	# Install Yarn
-	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -;
-	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list;
-	sudo apt update && sudo apt install yarn;
-
-	
   # Disabled by Gedean Dias
 	# rm -rf /var/lib/apt/lists/*; 
 	
@@ -101,7 +89,9 @@ set -eux;
 	[ "$(command -v ruby)" = '/usr/local/bin/ruby' ]; 
 # rough smoke test
 	ruby --version; 
-	gem --version; 
+	gem up --system;
+	gem --version;
+	gem install bundler
 	bundle --version  
 
 # don't create ".bundle" in all our apps
@@ -109,16 +99,3 @@ GEM_HOME=/usr/local/bundle
 BUNDLE_SILENCE_ROOT_WARNING=1
 BUNDLE_APP_CONFIG=$GEM_HOME
 PATH=$GEM_HOME/bin:$PATH
-
-
-# Oh My ZSH (Git)
-sudo apt install zsh -y
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-### added by Gedean Dias
-# Clean up garbage
-# sudo apt-get autoremove -y
-
-
-# adjust permissions of a few directories for running "gem install" as an arbitrary user
-# RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"  
