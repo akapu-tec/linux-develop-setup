@@ -48,7 +48,7 @@ set -eux;
 	apt-get install -y --no-install-recommends libffi-dev;
 	
 	# rails app specific	
-	apt-get install -y --no-install-recommends libmysqlclient-dev;
+	apt-get install -y --no-install-recommends libmysqlclient-dev libsqlite3-dev;
 
 	# NodeJS
 	# apt-get install -y --no-install-recommends nodejs;
