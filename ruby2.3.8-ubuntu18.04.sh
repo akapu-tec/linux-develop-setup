@@ -1,7 +1,7 @@
-# Install Ruby 2.7.2
-# Ubuntu 20.04
+# Install Ruby 2.3.8
+# Ubuntu 18.04
 # Author: Gedean Dias
-# Date: 12-2020
+# Date: 03-2021
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 
 # Read commom issues of specific libs at the end of this file
@@ -12,6 +12,8 @@
 # e.g.
 # wsl --set-version Ubuntu-20.04 2
 
+## OpenSSL problems
+# https://askubuntu.com/questions/513369/openssl-installed-but-ruby-unable-to-require-it
 
 ### Ubuntu
 sudo apt update
@@ -24,21 +26,20 @@ set -eux;
 	} >> /usr/local/etc/gemrc
 
 LANG=C.UTF-8
-RUBY_MAJOR=2.7
-RUBY_VERSION=2.7.2
-RUBY_DOWNLOAD_SHA256=1b95ab193cc8f5b5e59d2686cb3d5dcf1ddf2a86cb6950e0b4bdaae5040ec0d6
+RUBY_MAJOR=2.3
+RUBY_VERSION=2.3.8
+RUBY_DOWNLOAD_SHA256=910f635d84fd0d81ac9bdee0731279e6026cb4cd1315bbbb5dfb22e09c5c1dfe
 
 set -eux; 
 	
 	savedAptMark="$(apt-mark showmanual)"; 
-	apt-get update; 
 	apt-get install -y --no-install-recommends bison;
 	apt-get install -y --no-install-recommends dpkg-dev;
 	apt-get install -y --no-install-recommends libgdbm-dev;
 	apt-get install -y --no-install-recommends ruby; 
 
   # added by Gedean Dias 
-	apt-get install -y --no-install-recommends libpq-dev; 
+	apt-get install -y --no-install-recommends openssl; 
 	apt-get install -y --no-install-recommends autoconf; 
 	apt-get install -y --no-install-recommends build-essential;
 	apt-get install -y --no-install-recommends zlib1g-dev; 
@@ -49,19 +50,8 @@ set -eux;
 	apt-get install -y --no-install-recommends libffi-dev;
 	
 	# rails app specific	
-	apt-get install -y --no-install-recommends libmysqlclient-dev libsqlite3-dev;
+	apt-get install -y --no-install-recommends libmysqlclient-dev;
 
-	# NodeJS
-	# apt-get install -y --no-install-recommends nodejs;
-	curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -;
-	apt-get install -y nodejs;
-	
-	# Install Yarn
-	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -;
-	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list;
-	sudo apt update && sudo apt install yarn;
-
-	
   # Disabled by Gedean Dias
 	# rm -rf /var/lib/apt/lists/*; 
 	
@@ -102,7 +92,9 @@ set -eux;
 	[ "$(command -v ruby)" = '/usr/local/bin/ruby' ]; 
 # rough smoke test
 	ruby --version; 
-	gem --version; 
+	gem up --system;
+	gem --version;
+	gem install bundler
 	bundle --version  
 
 # don't create ".bundle" in all our apps
@@ -110,16 +102,3 @@ GEM_HOME=/usr/local/bundle
 BUNDLE_SILENCE_ROOT_WARNING=1
 BUNDLE_APP_CONFIG=$GEM_HOME
 PATH=$GEM_HOME/bin:$PATH
-
-
-# Oh My ZSH (Git)
-sudo apt install zsh -y
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-### added by Gedean Dias
-# Clean up garbage
-# sudo apt-get autoremove -y
-
-
-# adjust permissions of a few directories for running "gem install" as an arbitrary user
-# RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"  
