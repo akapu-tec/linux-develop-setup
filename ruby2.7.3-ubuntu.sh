@@ -1,7 +1,7 @@
-# Install Ruby 2.7.2
+# Install Ruby 2.7.3
 # Ubuntu 20.04
 # Author: Gedean Dias
-# Date: 12-2020
+# Date: 04-2021
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 
 # Read commom issues of specific libs at the end of this file
@@ -25,8 +25,8 @@ set -eux;
 
 LANG=C.UTF-8
 RUBY_MAJOR=2.7
-RUBY_VERSION=2.7.2
-RUBY_DOWNLOAD_SHA256=1b95ab193cc8f5b5e59d2686cb3d5dcf1ddf2a86cb6950e0b4bdaae5040ec0d6
+RUBY_VERSION=2.7.3
+RUBY_DOWNLOAD_SHA256=5e91d1650857d43cd6852e05ac54683351e9c301811ee0bef43a67c4605e7db1
 
 set -eux; 
 	
