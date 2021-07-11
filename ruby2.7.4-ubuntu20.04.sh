@@ -3,7 +3,7 @@
 # Author: Gedean Dias
 # Date: 07-2021
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
-# Release List: https://www.ruby-lang.org/en/news/2021/07/07/ruby-2-7-4-released/
+# Release List: https://www.ruby-lang.org/en/downloads/releases/
 
 # Read commom issues of specific libs at the end of this file
 
