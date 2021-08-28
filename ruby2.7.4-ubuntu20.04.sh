@@ -1,7 +1,7 @@
-# Install Ruby 2.7.4
+# Install Ruby 2.7.4 AND Redis
 # Ubuntu 20.04
 # Author: Gedean Dias
-# Date: 07-2021
+# Date: 08-2021
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 # Release List: https://www.ruby-lang.org/en/downloads/releases/
 
@@ -51,6 +51,14 @@ set -eux;
 	
 	# rails app specific	
 	apt-get install -y --no-install-recommends libmysqlclient-dev libsqlite3-dev;
+
+	### Redis
+	# https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04-pt
+		## problem: # service redis-server start
+	apt-get install -y --no-install-recommends redis-server;
+
+	# Fix: https://medium.com/@RedisLabs/windows-subsystem-for-linux-wsl-10e3ca4d434e
+	service redis-server restart
 
 	# NodeJS
 	# apt-get install -y --no-install-recommends nodejs;
