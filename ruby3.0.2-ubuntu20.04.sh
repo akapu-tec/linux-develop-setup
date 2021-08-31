@@ -1,4 +1,4 @@
-# Install Ruby 2.7.4 AND Redis
+# Install Ruby 3.0.2 AND Redis
 # Ubuntu 20.04
 # Author: Gedean Dias
 # Date: 08-2021
@@ -25,9 +25,10 @@ set -eux;
 	} >> /usr/local/etc/gemrc
 
 LANG=C.UTF-8
-RUBY_MAJOR=2.7
-RUBY_VERSION=2.7.4
-RUBY_DOWNLOAD_SHA256=3043099089608859fc8cce7f9fdccaa1f53a462457e3838ec3b25a7d609fbc5b
+# RUBY_MAJOR=2.7
+# RUBY_VERSION=2.7.4
+RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.2.tar.gz'
+RUBY_DOWNLOAD_SHA256=5085dee0ad9f06996a8acec7ebea4a8735e6fac22f22e2d98c3f2bc3bef7e6f1
 
 set -eux; 
 	
@@ -74,7 +75,7 @@ set -eux;
   # Disabled by Gedean Dias
 	# rm -rf /var/lib/apt/lists/*; 
 	
-	wget -O ruby.tar.gz "https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR%-rc}/ruby-$RUBY_VERSION.tar.gz";
+	wget -O ruby.tar.gz ${RUBY_DOWNLOAD_URI};
 	echo "$RUBY_DOWNLOAD_SHA256 *ruby.tar.gz" | sha256sum --check --strict;
 	
 	mkdir -p /usr/src/ruby; 
