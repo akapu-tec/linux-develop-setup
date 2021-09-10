@@ -49,6 +49,8 @@ set -eux;
 	apt-get install -y --no-install-recommends libc6-dev;
 	apt-get install -y --no-install-recommends libz-dev;
 	apt-get install -y --no-install-recommends libffi-dev;
+	# Firebird's 
+	apt-get install -y --no-install-recommends firebird-dev;
 	
 	# rails app specific	
 	apt-get install -y --no-install-recommends libmysqlclient-dev libsqlite3-dev;
