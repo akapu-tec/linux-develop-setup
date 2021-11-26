@@ -1,7 +1,7 @@
 # Install Ruby 3.0.3 AND Redis
 # Ubuntu 20.04
 # Author: Gedean Dias
-# Date: 08-2021
+# Date: 11-2021
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 # Release List: https://www.ruby-lang.org/en/downloads/releases/
 
@@ -25,10 +25,8 @@ set -eux;
 	} >> /usr/local/etc/gemrc
 
 LANG=C.UTF-8
-# RUBY_MAJOR=2.7
-# RUBY_VERSION=2.7.4
-RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.2.tar.gz'
-RUBY_DOWNLOAD_SHA256=5085dee0ad9f06996a8acec7ebea4a8735e6fac22f22e2d98c3f2bc3bef7e6f1
+RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.3.tar.gz'
+RUBY_DOWNLOAD_SHA256=3586861cb2df56970287f0fd83f274bd92058872d830d15570b36def7f1a92ac
 
 set -eux; 
 	
