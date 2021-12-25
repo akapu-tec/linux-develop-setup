@@ -5,6 +5,11 @@
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 # Release List: https://www.ruby-lang.org/en/downloads/releases/
 
+# Release Notes:
+	# Adds support for Ruby 3.1.0
+	# Disables Yarn and Node-JS installation becouse this installation targets
+	# to run Ruby On Rails 7 + that has a different JS handling approach.
+
 # Read commom issues of specific libs at the end of this file
 
 ### WSL Setup
@@ -62,14 +67,13 @@ set -eux;
 	service redis-server restart
 
 	# NodeJS
-	# apt-get install -y --no-install-recommends nodejs;
-	curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -;
-	apt-get install -y nodejs;
+		#curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -;
+		#apt-get install -y nodejs;
 	
 	# Install Yarn
-	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -;
-	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list;
-	sudo apt update && sudo apt install yarn;
+		#curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -;
+		#echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list;
+		#sudo apt update && sudo apt install yarn;
 
 	
   # Disabled by Gedean Dias
@@ -127,10 +131,10 @@ sudo apt install zsh -y
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ### added by Gedean Dias
-# Clean up garbage
-# sudo apt-get autoremove -y
+	# Clean up garbage
+	# sudo apt-get autoremove -y
 
 # adjust permissions of a few directories for running "gem install" as an arbitrary user
-# RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"  
+	# RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"  
 
 gem up --system --no-doc
