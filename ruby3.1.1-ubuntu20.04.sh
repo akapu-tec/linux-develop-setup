@@ -1,4 +1,4 @@
-# Install Ruby 3.1.0 AND Redis
+# Install Ruby 3.1.1, Redis AND PDF Handling
 # Ubuntu 20.04
 # Author: Gedean Dias
 # Date: 12-2021
@@ -6,7 +6,8 @@
 # Release List: https://www.ruby-lang.org/en/downloads/releases/
 
 # Release Notes:
-	# Adds support for Ruby 3.1.0
+	# Adds PDF Handling
+	# Adds support for Ruby 3.1.1
 	# Disables Yarn and Node-JS installation becouse this installation targets
 	# to run Ruby On Rails 7 + that has a different JS handling approach.
 
@@ -30,8 +31,8 @@ set -eux;
 	} >> /usr/local/etc/gemrc
 
 LANG=C.UTF-8
-RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.0.tar.gz'
-RUBY_DOWNLOAD_SHA256=50a0504c6edcb4d61ce6b8cfdbddaa95707195fab0ecd7b5e92654b2a9412854
+RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.1.tar.gz'
+RUBY_DOWNLOAD_SHA256=fe6e4782de97443978ddba8ba4be38d222aa24dc3e3f02a6a8e7701c0eeb619d
 
 set -eux; 
 	
@@ -52,8 +53,16 @@ set -eux;
 	apt-get install -y --no-install-recommends libc6-dev;
 	apt-get install -y --no-install-recommends libz-dev;
 	apt-get install -y --no-install-recommends libffi-dev;
-	# Firebird's 
+
+	# Firebird requirements
 	apt-get install -y --no-install-recommends firebird-dev;
+
+	# PDF Handing
+	apt-get install -y --no-install-recommends pdfgrep;
+	apt-get install -y --no-install-recommends pdftk;
+	apt-get install -y --no-install-recommends qpdf;
+	# pdftotext
+	apt-get install -y --no-install-recommends poppler-utils;
 	
 	# rails app specific	
 	apt-get install -y --no-install-recommends libmysqlclient-dev libsqlite3-dev;
