@@ -1,4 +1,4 @@
-# Install Ruby 3.1.1, Redis AND PDF Handling
+# Install Ruby 3.1.2, Redis AND PDF Handling
 # Ubuntu 20.04
 # Author: Gedean Dias
 # Date: 12-2021
@@ -6,10 +6,7 @@
 # Release List: https://www.ruby-lang.org/en/downloads/releases/
 
 # Release Notes:
-	# Adds PDF Handling
-	# Adds support for Ruby 3.1.1
-	# Disables Yarn and Node-JS installation becouse this installation targets
-	# to run Ruby On Rails 7 + that has a different JS handling approach.
+	# Adds support for Ruby 3.1.2
 
 # Read commom issues of specific libs at the end of this file
 
@@ -31,8 +28,8 @@ set -eux;
 	} >> /usr/local/etc/gemrc
 
 LANG=C.UTF-8
-RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.1.tar.gz'
-RUBY_DOWNLOAD_SHA256=fe6e4782de97443978ddba8ba4be38d222aa24dc3e3f02a6a8e7701c0eeb619d
+RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.2.tar.gz'
+RUBY_DOWNLOAD_SHA256=61843112389f02b735428b53bb64cf988ad9fb81858b8248e22e57336f24a83e
 
 set -eux; 
 	
