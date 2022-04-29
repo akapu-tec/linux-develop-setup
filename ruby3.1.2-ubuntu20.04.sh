@@ -61,6 +61,9 @@ set -eux;
 	# pdftotext
 	apt-get install -y --no-install-recommends poppler-utils;
 	
+	# for PlantUml Viewers
+	apt-get install -y --no-install-recommends graphviz;
+	
 	# rails app specific	
 	apt-get install -y --no-install-recommends libmysqlclient-dev libsqlite3-dev;
 
