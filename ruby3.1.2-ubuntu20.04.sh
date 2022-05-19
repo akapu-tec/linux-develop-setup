@@ -61,6 +61,11 @@ set -eux;
 	# pdftotext
 	apt-get install -y --no-install-recommends poppler-utils;
 	
+	# Image to PDF
+	# https://techpiezo.com/linux/convert-png-jpeg-to-pdf-in-ubuntu/
+	# use: img2pdf *.png -o outcome.pdf
+	apt-get install -y --no-install-recommends img2pdf;
+	
 	# for PlantUml Viewers
 	apt-get install -y --no-install-recommends graphviz;
 	
