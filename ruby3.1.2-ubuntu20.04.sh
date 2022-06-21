@@ -34,7 +34,7 @@ RUBY_DOWNLOAD_SHA256=61843112389f02b735428b53bb64cf988ad9fb81858b8248e22e57336f2
 set -eux; 
 	
 	savedAptMark="$(apt-mark showmanual)"; 
-	apt-get update; 
+
 	apt-get install -y --no-install-recommends bison;
 	apt-get install -y --no-install-recommends dpkg-dev;
 	apt-get install -y --no-install-recommends libgdbm-dev;
