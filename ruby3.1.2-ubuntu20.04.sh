@@ -1,7 +1,7 @@
 # Install Ruby 3.1.2, Redis AND PDF Handling
-# Ubuntu 20.04
+# Ubuntu 22.04
 # Author: Gedean Dias
-# Date: 12-2021
+# Date: 09-2022
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 # Release List: https://www.ruby-lang.org/en/downloads/releases/
 
@@ -80,9 +80,9 @@ set -eux;
 	# Fix: https://medium.com/@RedisLabs/windows-subsystem-for-linux-wsl-10e3ca4d434e
 	service redis-server restart
 
-	# NodeJS
+	# NodeJS as a js runtime, becouse of mini_racer gets bigger bundler
 		#curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -;
-		#apt-get install -y nodejs;
+	apt-get install -y --no-install-recommends nodejs;
 	
 	# Install Yarn
 		#curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -;
@@ -141,8 +141,8 @@ PATH=$GEM_HOME/bin:$PATH
 
 
 # Oh My ZSH (Git)
-sudo apt install zsh -y
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# sudo apt install zsh -y
+# sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ### added by Gedean Dias
 	# Clean up garbage
