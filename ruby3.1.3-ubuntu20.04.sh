@@ -39,6 +39,8 @@ set -eux;
 	apt-get install -y --no-install-recommends dpkg-dev;
 	apt-get install -y --no-install-recommends libgdbm-dev;
 	apt-get install -y --no-install-recommends ruby; 
+	# due to newest ruby version no longer bundle 3rd party sources like libyaml, libffi.
+	apt-get install -y --no-install-recommends libyaml-dev;
 
   # added by Gedean Dias 
 	apt-get install -y --no-install-recommends libpq-dev; 
