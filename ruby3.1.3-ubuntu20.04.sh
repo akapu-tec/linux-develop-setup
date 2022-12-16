@@ -41,9 +41,12 @@ set -eux;
 	apt-get install -y --no-install-recommends ruby; 
 	# due to newest ruby version no longer bundle 3rd party sources like libyaml, libffi.
 	apt-get install -y --no-install-recommends libyaml-dev;
-	
+
+	# readline-ext requirements	
+	apt-get install -y --no-install-recommends libedit-dev;
 	# rever essa versão 14 no final.
 	apt-get install -y --no-install-recommends libcurl4 libcurl4-openssl-dev;
+	
 
   # added by Gedean Dias 
 	apt-get install -y --no-install-recommends libpq-dev; 
