@@ -5,6 +5,8 @@
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 # Release List: https://www.ruby-lang.org/en/downloads/releases/
 
+# Tips: best ubuntu version is 22.04.2
+
 # Release Notes:
 	# Adds support for Ruby 3.2.1
 
