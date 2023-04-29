@@ -87,7 +87,8 @@ set -eux;
 	### Redis
 	# https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04-pt
 		## problem: # service redis-server start
-	apt-get install -y --no-install-recommends redis-server;
+	# apt-get install -y --no-install-recommends redis-server;
+	apt-get install -y --no-install-recommends redis;
 
 	# Fix: https://medium.com/@RedisLabs/windows-subsystem-for-linux-wsl-10e3ca4d434e
 	service redis-server restart
