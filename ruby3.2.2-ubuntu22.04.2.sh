@@ -31,8 +31,6 @@ set -eux;
 
 LANG=C.UTF-8
 
-REDIS_VERSION='redis-7.0.12.tar.gz'
-
 RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.2.tar.gz'
 RUBY_DOWNLOAD_SHA256=96c57558871a6748de5bc9f274e93f4b5aad06cd8f37befa0e8d94e7b8a423bc
 
@@ -93,13 +91,21 @@ set -eux;
 	apt-get install -y --no-install-recommends nodejs;
 
 	### Redis
-#	apt-get install -y --no-install-recommends pkg-config
-	wget https://download.redis.io/releases/${REDIS_VERSION}
-	tar -xzvf ${RUBY_DOWNLOAD_URI}
-	cd RUBY_DOWNLOAD_URI
+	REDIS_VERSION='redis-7.0.12'
+	REDIS_FILE="${REDIS_VERSION}.tar.gz"
+	wget https://download.redis.io/releases/${REDIS_FILE}
+	tar -xzvf ${REDIS_FILE}
+	cd ${REDIS_VERSION}
+	
+	apt-get install -y --no-install-recommends pkg-config
+	apt-get install -y --no-install-recommends libjemalloc-dev
+
 	make
 	make install
-	redis-server	
+	cd ..
+	rm -rf redis-7.0.12
+	rm redis-7.0.12.tar.gz
+	redis-server
 	
 	wget -O ruby.tar.gz ${RUBY_DOWNLOAD_URI};
 	echo "$RUBY_DOWNLOAD_SHA256 *ruby.tar.gz" | sha256sum --check --strict;
