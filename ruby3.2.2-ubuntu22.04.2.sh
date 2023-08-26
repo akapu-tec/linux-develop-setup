@@ -85,13 +85,13 @@ set -eux;
 	apt-get install -y --no-install-recommends libmysqlclient-dev libsqlite3-dev;
 
 	### Redis
-	# https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04-pt
-		## problem: # service redis-server start
-	# apt-get install -y --no-install-recommends redis-server;
-	apt-get install -y --no-install-recommends redis;
-
-	# Fix: https://medium.com/@RedisLabs/windows-subsystem-for-linux-wsl-10e3ca4d434e
-	service redis-server restart
+	wget https://download.redis.io/releases/redis-7.0.12.tar.gz
+	tar -xzvf redis7.tar.gz
+	cd redis-7.0.12
+	make
+	make install
+	redis-server
+ 	apt-get install -y --no-install-recommends pkg-config
 
 	# NodeJS as a js runtime, for the sake of mini_racer gets bigger bundler
 		#curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -;
