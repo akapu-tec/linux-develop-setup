@@ -18,8 +18,7 @@
 # e.g.
 # wsl --set-version Ubuntu-20.04 2
 
-## Do prefer reset wsl installation:
-# wsl --unregister Ubuntu-22.04
+## Do prefer reset wsl installation: wsl --unregister Ubuntu-22.04
 
 ### Ubuntu
 sudo apt update
