@@ -18,6 +18,8 @@
 # e.g.
 # wsl --set-version Ubuntu-20.04 2
 
+## Do prefer reset wsl installation:
+# wsl --unregister Ubuntu-22.04
 
 ### Ubuntu
 sudo apt update
@@ -96,7 +98,7 @@ set -eux;
 	wget https://download.redis.io/releases/${REDIS_FILE}
 	tar -xzvf ${REDIS_FILE}
 	cd ${REDIS_VERSION}
-	
+
 	apt-get install -y --no-install-recommends pkg-config
 	apt-get install -y --no-install-recommends libjemalloc-dev
 
@@ -105,7 +107,7 @@ set -eux;
 	cd ..
 	rm -rf redis-7.0.12
 	rm redis-7.0.12.tar.gz
-	redis-server
+	# redis-server
 	
 	wget -O ruby.tar.gz ${RUBY_DOWNLOAD_URI};
 	echo "$RUBY_DOWNLOAD_SHA256 *ruby.tar.gz" | sha256sum --check --strict;
@@ -152,11 +154,6 @@ GEM_HOME=/usr/local/bundle
 BUNDLE_SILENCE_ROOT_WARNING=1
 BUNDLE_APP_CONFIG=$GEM_HOME
 PATH=$GEM_HOME/bin:$PATH
-
-
-# Oh My ZSH (Git)
-# sudo apt install zsh -y
-# sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ### added by Gedean Dias
 	# Clean up garbage
