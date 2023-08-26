@@ -91,9 +91,8 @@ set -eux;
 		#curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -;
 	apt-get install -y --no-install-recommends nodejs;
 
-	### Redis
-	# REDIS_VERSION='redis-7.0.12'
-	REDIS_VERSION='redis-stable'
+	### Redis 7.0
+	REDIS_VERSION='redis-7.0.12'
 	REDIS_FILE="${REDIS_VERSION}.tar.gz"
 	wget https://download.redis.io/releases/${REDIS_FILE}
 	tar -xzvf ${REDIS_FILE}
@@ -107,7 +106,23 @@ set -eux;
 	cd ..
 	rm -rf ${REDIS_VERSION}
 	rm ${REDIS_FILE}
-	# redis-server
+
+# 	### Redis 7.2
+# 	REDIS_VERSION='7.2.0'
+# 	REDIS_SETUP_DIR="redis-${REDIS_VERSION}"
+# 	wget https://github.com/redis/redis/archive/${REDIS_VERSION}.tar.gz
+# 	tar -xzvf ${REDIS_VERSION}.tar.gz
+# 	cd ${REDIS_SETUP_DIR}
+
+# #	apt-get install -y --no-install-recommends pkg-config
+# #	apt-get install -y --no-install-recommends libjemalloc-dev
+
+# 	make
+# 	make install
+# 	cd ..
+# 	rm -rf ${REDIS_SETUP_DIR}
+# 	rm ${REDIS_FILE}
+
 	
 	wget -O ruby.tar.gz ${RUBY_DOWNLOAD_URI};
 	echo "$RUBY_DOWNLOAD_SHA256 *ruby.tar.gz" | sha256sum --check --strict;
