@@ -104,8 +104,8 @@ set -eux;
 	make
 	make install
 	cd ..
-	rm -rf redis-7.0.12
-	rm redis-7.0.12.tar.gz
+	rm -rf ${REDIS_VERSION}
+	rm ${REDIS_FILE}
 	# redis-server
 	
 	wget -O ruby.tar.gz ${RUBY_DOWNLOAD_URI};
