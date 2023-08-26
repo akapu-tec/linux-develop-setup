@@ -92,7 +92,8 @@ set -eux;
 	apt-get install -y --no-install-recommends nodejs;
 
 	### Redis
-	REDIS_VERSION='redis-7.0.12'
+	# REDIS_VERSION='redis-7.0.12'
+	REDIS_VERSION='redis-stable'
 	REDIS_FILE="${REDIS_VERSION}.tar.gz"
 	wget https://download.redis.io/releases/${REDIS_FILE}
 	tar -xzvf ${REDIS_FILE}
