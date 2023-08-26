@@ -1,14 +1,14 @@
 # Install Ruby 3.2.2, Redis AND PDF Handling
-# Ubuntu 22.04.1 LTS
+# Ubuntu 22.04.2 LTS
 # Author: Gedean Dias
-# Date: 2023-05-17
+# Date: 2023-08-26
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 # Release List: https://www.ruby-lang.org/en/downloads/releases/
 
 # Tips: best ubuntu version is 22.04.2
 
 # Release Notes:
-	# Intalls Ruby 3.2.2
+	# Installs Redis 7.0
 
 # Read commom issues of specific libs at the end of this file
 
@@ -30,6 +30,9 @@ set -eux;
 	} >> /usr/local/etc/gemrc
 
 LANG=C.UTF-8
+
+REDIS_VERSION='redis-7.0.12.tar.gz'
+
 RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.2.tar.gz'
 RUBY_DOWNLOAD_SHA256=96c57558871a6748de5bc9f274e93f4b5aad06cd8f37befa0e8d94e7b8a423bc
 
@@ -84,27 +87,19 @@ set -eux;
 	# rails app specific	
 	apt-get install -y --no-install-recommends libmysqlclient-dev libsqlite3-dev;
 
-	### Redis
-	wget https://download.redis.io/releases/redis-7.0.12.tar.gz
-	tar -xzvf redis7.tar.gz
-	cd redis-7.0.12
-	make
-	make install
-	redis-server
- 	apt-get install -y --no-install-recommends pkg-config
 
 	# NodeJS as a js runtime, for the sake of mini_racer gets bigger bundler
 		#curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -;
 	apt-get install -y --no-install-recommends nodejs;
-	
-	# Install Yarn
-		#curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -;
-		#echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list;
-		#sudo apt update && sudo apt install yarn;
 
-	
-  # Disabled by Gedean Dias
-	# rm -rf /var/lib/apt/lists/*; 
+	### Redis
+#	apt-get install -y --no-install-recommends pkg-config
+	wget https://download.redis.io/releases/${REDIS_VERSION}
+	tar -xzvf ${RUBY_DOWNLOAD_URI}
+	cd RUBY_DOWNLOAD_URI
+	make
+	make install
+	redis-server	
 	
 	wget -O ruby.tar.gz ${RUBY_DOWNLOAD_URI};
 	echo "$RUBY_DOWNLOAD_SHA256 *ruby.tar.gz" | sha256sum --check --strict;
