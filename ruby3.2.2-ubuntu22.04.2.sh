@@ -92,6 +92,7 @@ set -eux;
 	apt-get install -y --no-install-recommends nodejs;
 
 	### Redis Stack Server 7.2
+	# https://redis.io/docs/getting-started/install-stack/linux/
 	curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
 	sudo chmod 644 /usr/share/keyrings/redis-archive-keyring.gpg
 	echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
