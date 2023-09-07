@@ -8,7 +8,7 @@
 # Tips: best ubuntu version is 22.04.2
 
 # Release Notes:
-	# Installs Redis 7.0
+	# Installs Redis Stack Server 7.2
 
 # Read commom issues of specific libs at the end of this file
 
@@ -91,38 +91,12 @@ set -eux;
 		#curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -;
 	apt-get install -y --no-install-recommends nodejs;
 
-	### Redis 7.0
-	REDIS_VERSION='redis-7.0.12'
-	REDIS_FILE="${REDIS_VERSION}.tar.gz"
-	wget https://download.redis.io/releases/${REDIS_FILE}
-	tar -xzvf ${REDIS_FILE}
-	cd ${REDIS_VERSION}
-
-	apt-get install -y --no-install-recommends pkg-config
-	apt-get install -y --no-install-recommends libjemalloc-dev
-
-	make
-	make install
-	cd ..
-	rm -rf ${REDIS_VERSION}
-	rm ${REDIS_FILE}
-
-# 	### Redis 7.2
-# 	REDIS_VERSION='7.2.0'
-# 	REDIS_SETUP_DIR="redis-${REDIS_VERSION}"
-# 	wget https://github.com/redis/redis/archive/${REDIS_VERSION}.tar.gz
-# 	tar -xzvf ${REDIS_VERSION}.tar.gz
-# 	cd ${REDIS_SETUP_DIR}
-
-# #	apt-get install -y --no-install-recommends pkg-config
-# #	apt-get install -y --no-install-recommends libjemalloc-dev
-
-# 	make
-# 	make install
-# 	cd ..
-# 	rm -rf ${REDIS_SETUP_DIR}
-# 	rm ${REDIS_FILE}
-
+	### Redis Stack Server 7.2
+	curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+	sudo chmod 644 /usr/share/keyrings/redis-archive-keyring.gpg
+	echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+	sudo apt-get update
+	sudo apt-get install redis-stack-server	
 	
 	wget -O ruby.tar.gz ${RUBY_DOWNLOAD_URI};
 	echo "$RUBY_DOWNLOAD_SHA256 *ruby.tar.gz" | sha256sum --check --strict;
