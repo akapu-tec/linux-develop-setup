@@ -62,6 +62,7 @@ set -eux;
 	apt-get install -y --no-install-recommends libc6-dev;
 	apt-get install -y --no-install-recommends libz-dev;
 	apt-get install -y --no-install-recommends libffi-dev;
+	apt-get install -y --no-install-recommends sqlite3;
 
 	apt-get install -y --no-install-recommends p7zip-full;
 
