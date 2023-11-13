@@ -81,6 +81,8 @@ set -eux;
 	# use: img2pdf *.png -o outcome.pdf
 	apt-get install -y --no-install-recommends img2pdf;
 	
+	apt-get install -y --no-install-recommends imagemagick;
+
 	# for PlantUml Viewers
 	apt-get install -y --no-install-recommends graphviz;
 	
