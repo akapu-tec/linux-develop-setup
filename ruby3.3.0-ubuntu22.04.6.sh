@@ -158,4 +158,6 @@ PATH=$GEM_HOME/bin:$PATH
 # adjust permissions of a few directories for running "gem install" as an arbitrary user
 	# RUN mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME"  
 
+echo 'gem: --no-document' >> ~/.gemrc
+
 gem up --system --no-doc
