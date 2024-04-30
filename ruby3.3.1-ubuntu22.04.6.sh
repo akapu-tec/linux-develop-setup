@@ -1,7 +1,7 @@
-# Install Ruby 3.2.2, Redis AND PDF Handling
+# Install Ruby 3.3.1, Redis AND PDF Handling
 # Ubuntu 22.04.2 LTS
 # Author: Gedean Dias
-# Date: 2023-08-26
+# Date: 2024-04-30
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 # Release List: https://www.ruby-lang.org/en/downloads/releases/
 
@@ -34,8 +34,8 @@ set -eux;
 
 LANG=C.UTF-8
 
-RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.0.tar.gz'
-RUBY_DOWNLOAD_SHA256=96518814d9832bece92a85415a819d4893b307db5921ae1f0f751a9a89a56b7d
+RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.1.tar.gz'
+RUBY_DOWNLOAD_SHA256=8dc2af2802cc700cd182d5430726388ccf885b3f0a14fcd6a0f21ff249c9aa99
 
 set -eux; 
 	
