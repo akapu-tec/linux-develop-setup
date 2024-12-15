@@ -34,8 +34,8 @@ set -eux;
 
 LANG=C.UTF-8
 
-RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.4.tar.gz'
-RUBY_DOWNLOAD_SHA256=fe6a30f97d54e029768f2ddf4923699c416cdbc3a6e96db3e2d5716c7db96a34
+RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.6.tar.gz'
+RUBY_DOWNLOAD_SHA256=8dc48fffaf270f86f1019053f28e51e4da4cce32a36760a0603a9aee67d7fd8d
 
 set -eux; 
 	
