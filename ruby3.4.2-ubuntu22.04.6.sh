@@ -1,7 +1,7 @@
-# Install Ruby 3.4.1, Redis AND PDF Handling
+# Install Ruby 3.4.8, Redis AND PDF Handling
 # Ubuntu 22.04.2 LTS
 # Author: Gedean Dias
-# Date: 2025-01-03
+# Date: 2026-02-11
 # Based on Ruby Docker Image: https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 # Release List: https://www.ruby-lang.org/en/downloads/releases/
 
@@ -34,8 +34,8 @@ set -eux;
 
 LANG=C.UTF-8
 
-RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.2.tar.gz'
-RUBY_DOWNLOAD_SHA256=41328ac21f2bfdd7de6b3565ef4f0dd7543354d37e96f157a1552a6bd0eb364b
+RUBY_DOWNLOAD_URI='https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.8.tar.gz'
+RUBY_DOWNLOAD_SHA256=53c4ddad41fbb6189f1f5ee0db57a51d54bd1f87f8755b3d68604156a35b045b
 
 set -eux; 
 	
@@ -99,11 +99,12 @@ set -eux;
 	### Redis Stack Server 7.2
 	# https://redis.io/docs/getting-started/install-stack/linux/
 	
-	curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
-	sudo chmod 644 /usr/share/keyrings/redis-archive-keyring.gpg
-	echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
-	sudo apt-get update
-	sudo apt-get install redis-stack-server	
+	### No more Redis
+	# curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+	# sudo chmod 644 /usr/share/keyrings/redis-archive-keyring.gpg
+	# echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+	# sudo apt-get update
+	# sudo apt-get install redis-stack-server	
 	
 	wget -O ruby.tar.gz ${RUBY_DOWNLOAD_URI};
 	echo "$RUBY_DOWNLOAD_SHA256 *ruby.tar.gz" | sha256sum --check --strict;
