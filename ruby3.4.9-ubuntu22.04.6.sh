@@ -8,6 +8,12 @@
 # https://github.com/docker-library/ruby/blob/8e49e25b591d4cfa6324b6dada4f16629a1e51ce/2.7/buster/Dockerfile
 # Release List: https://www.ruby-lang.org/en/downloads/releases/
 
+
+#####
+# Installer
+# curl -fsSL https://raw.githubusercontent.com/akapu-tec/linux-develop-setup/refs/heads/master/ruby3.4.9-ubuntu22.04.6.sh | bash
+#####
+
 ## User Setup
 # On first distro run, you have to setup an defalt user and password. Set it up and close session.
 # On Powershell, run: wsl --manage Ubuntu-24.04 --set-default-user root
